@@ -1,0 +1,26 @@
+{
+  "name": "questions-app",
+  "description": "A coding questions app",
+  "main": "server.js",
+  "license": "ISC",
+  "keywords": [
+    "css",
+    "html",
+    "javascript",
+    "jquery",
+    "angular",
+    "node"
+  ],
+  "moduleType": [],
+  "homepage": "",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "jquery": "~2.1.4"
+  }
+}
