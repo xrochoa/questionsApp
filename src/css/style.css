@@ -41,13 +41,17 @@ input {
     color: #323333;
 }
 
+#answer {
+    margin-bottom: 50px;
+}
+
 button:hover {
     background-color: #2C7BB3;
 }
 
 div,
 section {
-    line-height: 5em;
+    margin: 2em 0;
 }
 
 #question,

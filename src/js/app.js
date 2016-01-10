@@ -4,7 +4,7 @@ $(document).ready(function() {
     var allQuestionsInitialLength;
 
 
-    $.getJSON('res/jquery.json', function(data) {
+    $.getJSON('/api', function(data) {
         allQuestions = data;
         console.log('data loaded');
         allQuestionsInitialLength = allQuestions.length;
@@ -27,8 +27,8 @@ $(document).ready(function() {
     }
 
     //Generates a random integer from allQuestions.length 
-    function getRandomInt() {
-        return Math.floor(Math.random() * allQuestions.length);
+    function getRandomInt(max) {
+        return Math.floor(Math.random() * max);
     }
 
 
@@ -37,12 +37,50 @@ $(document).ready(function() {
 
         if (allQuestions.length !== 0) {
 
-            var random = getRandomInt();
+            var random = getRandomInt(allQuestions.length);
 
+            /*
+            FOR KEY VALUE
             for (var key in allQuestions[random]) {
                 question = key;
                 answer = allQuestions[random][key];
             }
+            */
+            //QUESTION OPTIONS
+            var option = getRandomInt(6);
+            switch (option) {
+                case 0:
+                    question = 'What is the property that ' + allQuestions[random]['Description'].toLowerCase() + '?';
+                    answer = allQuestions[random]['Property'];
+                    console.log(answer);
+                    break;
+                case 1:
+                    question = 'What is the syntax for ' + allQuestions[random]['Property'] + '?';
+                    answer = allQuestions[random]['Syntax'];
+                    console.log(answer);
+                    break;
+                case 2:
+                    question = 'In what CSS version was ' + allQuestions[random]['Property'] + ' specified?';
+                    answer = allQuestions[random]['CSS'];
+                    console.log(answer);
+                    break;
+                case 3:
+                    question = 'Is ' + allQuestions[random]['Property'] + ' animatable?';
+                    answer = allQuestions[random]['Animatable'];
+                    console.log(answer);
+                    break;
+                case 4:
+                    question = 'Write an example for the ' + allQuestions[random]['Property'] + ' property';
+                    answer = allQuestions[random]['Example'];
+                    console.log(answer);
+                    break;
+                case 5:
+                    question = 'What type of property is ' + allQuestions[random]['Property'] + '?';
+                    answer = allQuestions[random]['Type'];
+                    console.log(answer);
+                    break;
+            }
+
             //deletes the item from the array
             allQuestions.splice(random, 1);
 
@@ -64,7 +102,7 @@ $(document).ready(function() {
 
         var string = $('#string').val();
 
-        if (string === answer) {
+        if (string == answer) {
             newQuestion();
         } else {
             $('#message').html('<span id="warning">Wrong answer!</span>').hide().fadeIn().fadeOut();
